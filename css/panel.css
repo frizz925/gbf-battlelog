@@ -1,4 +1,5 @@
 .filter-container {
+  width: 100%;
   background: #fff;
   position: fixed;
   padding: 5px;
@@ -14,4 +15,9 @@
   padding: 0;
   margin: 0;
   border-bottom: 1px solid #000;
+}
+
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
