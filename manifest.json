@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "Granblue Battlelog",
+  "description": "Extension for Granblue Fantasy to show battle log in real-time",
+  "version": "1.0.0",
+  "content_scripts": [{
+    "matches": [
+      "*://game.granbluefantasy.jp/*",
+      "*://gbf.game.mbga.jp/*"
+    ],
+    "js": ["contentscript.js"],
+    "run_at": "document_start"
+  }],
+  "permissions": [
+    "*://game.granbluefantasy.jp/*",
+    "*://gbf.game.mbga.jp/*",
+    "activeTab"
+  ],
+  "devtools_page": "pages/devtools.html",
+  "background": {
+    "scripts": ["background.js"]
+  }
+}
