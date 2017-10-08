@@ -67,7 +67,7 @@ state.port.onMessage.addListener(function(msg) {
 });
 
 state.form.elements["filter"].addEventListener("keyup", ::state.updateFilter);
-["case", "raidId", "regexp"].forEach(function(name) {
+["case", "lang", "raidId", "regexp"].forEach(function(name) {
   state.form.elements[name].addEventListener("change", ::state.updateFilter);
 });
 state.form.addEventListener("submit", function(evt) {

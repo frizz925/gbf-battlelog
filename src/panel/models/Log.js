@@ -27,12 +27,12 @@ export default class Log {
   filterView(filter) {
     if (filter.lang === "ja") {
       this.textEls.en.style.display = "none";
-      this.textEls.ja.style.display = "block";
+      this.textEls.ja.style.display = null;
     } else {
-      this.textEls.en.style.display = "block";
+      this.textEls.en.style.display = null;
       this.textEls.ja.style.display = "none";
     }
-    this.el.style.display = this.checkFilter(filter) ? "block" : "none";
+    this.el.style.display = this.checkFilter(filter) ? null : "none";
   }
   
   checkFilter(filter) {

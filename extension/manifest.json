@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Granblue Battlelog",
   "description": "Extension for Granblue Fantasy to show battle log in real-time",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "content_scripts": [{
     "matches": [
       "*://game.granbluefantasy.jp/*",
