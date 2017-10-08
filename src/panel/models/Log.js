@@ -7,7 +7,7 @@ export default class Log {
     this.el = null;
     this.textEls = {};
     this.comment = log.comment;
-    this.timestamp = Number(timestamp) || log.timestamp || new Date().getTime();
+    this.timestamp = Number(timestamp) || Number(log.timestamp) || new Date().getTime();
   }
 
   createView(root) {
