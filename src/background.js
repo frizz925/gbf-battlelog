@@ -7,29 +7,26 @@ function resetLogCache() {
   lastRaidId = undefined;
 }
 
-function handleLogs(raidId, msg) {
+function handleLogs(msg) {
+  const raidId = msg.raidId;
   const cache = logCache[raidId] || [];
-  const logs = [];
   msg.log.forEach(function(log) {
-    log.timestamp = msg.timestamp;
     cache.push(log);
-    logs.push(log);
   });
   logCache[raidId] = cache;
 
   listeners.forEach(function(listener) { 
     listener.postMessage({
       type: "update",
-      payload: logs
+      payload: msg
     });
   });
 }
 
 function handleEmitter(emitter) {
   emitter.onMessage.addListener(function(msg) {
-    const raidId = lastRaidId = msg.raidId;
-    const log = msg.log;
-    if (log) handleLogs(raidId, log);
+    lastRaidId = msg.raidId;
+    if (msg.log) handleLogs(msg);
   });
 }
 

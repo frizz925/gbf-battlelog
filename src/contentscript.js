@@ -1,3 +1,4 @@
+import _ from "lodash";
 import injected from "./injected";
 
 function parseBoss(boss) {
@@ -17,6 +18,12 @@ function parseBoss(boss) {
     bosses,
     timestamp: boss.timestamp,
   };
+}
+
+function parseLog(logs) {
+  return _.map(logs.log, (log) => _.assign({
+    timestamp: logs.timestamp
+  }, log));
 }
 
 const parent = document.head || document.documentElement;
@@ -50,7 +57,7 @@ channel.port1.onmessage = function(evt) {
   port.postMessage({
     raidId: raidId,
     boss: data.bossUpdate ? parseBoss(data.bossUpdate) : null,
-    log: data.logAdd,
+    log: data.logAdd ? parseLog(data.logAdd) : null,
   });
 };
 
