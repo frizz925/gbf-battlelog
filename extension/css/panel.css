@@ -1,0 +1,40 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+.form-group + .form-group {
+  padding-top: 5px;
+}
+
+.filter-container {
+  margin: 0;
+  background: #fff;
+  padding: 5px;
+  flex-grow: 0;
+  border-bottom: 1px solid #aaa;
+}
+
+.log-container {
+  padding: 5px 0;
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.log-comment {
+  margin: 0;
+  border-bottom: 1px solid #000;
+  min-height: 50px;
+  padding: 5px;
+}
+
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}

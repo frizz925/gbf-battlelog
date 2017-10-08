@@ -1,0 +1,34 @@
+<html>
+<head>
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/panel.css">
+<body>
+  <div class="main-container">
+    <form class="filter-container">
+      <div class="form-group">
+        <input name="filter" type="text" placeholder="Log filter">
+        <select name="raidId">
+        </select>
+        <select name="lang">
+          <option value="en" selected>English</option>
+          <option value="ja">日本語</option>
+        </select>
+        <input name="regexp" type="checkbox"> Regexp
+        <input name="case" type="checkbox"> Case sensitive
+      </div>
+      <div class="form-group">
+        <input name="reset" type="reset">
+        <input name="clear" type="button" value="Clear">
+        <input name="save" type="button" value="Save">
+        <select name="format">
+          <option value="text" selected>Text</option>
+          <option value="html">HTML</option>
+          <option value="json">JSON</option>
+        </select>
+      </div>
+    </form>
+    <div class="log-container"></div>
+  </div>
+  <script src="../dist/panel.js"></script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-function injected(context) {
+export default function injected(context) {
   var port;
 
   function onMessage(evt) {
@@ -21,10 +21,14 @@ function injected(context) {
     const boundConstructor = Function.bind.apply(origWebSocket, args);
     var result = new boundConstructor();
     result.addEventListener("message", function(evt) {
-      port.postMessage(evt.data);
+      port.postMessage({
+        raidId: context.Game.view.raid_id,
+        data: evt.data
+      });
     });
     return result;
   };
+
   for (var k in origWebSocket) {
     if (!origWebSocket.hasOwnProperty(k)) continue;
     newWebSocket[k] = origWebSocket[k];
@@ -37,29 +41,3 @@ function injected(context) {
   newWebSocket.prototype.constructor = newWebSocket;
   context.WebSocket = newWebSocket;
 }
-
-const parent = document.head || document.documentElement;
-const script = document.createElement("script");
-script.type = "text/javascript";
-script.innerHTML = "(" + injected.toString() + ")(this);";
-parent.appendChild(script);
-setTimeout(function() {
-  parent.removeChild(script);
-}, 1);
-
-const port = chrome.runtime.connect({name: "emitter"});
-const channel = new MessageChannel();
-channel.port1.onmessage = function(evt) {
-  var data = evt.data;
-  const idx = data.indexOf("[");
-  if (idx < 0) return;
-  data = data.substr(data.indexOf("["));
-  data = JSON.parse(data);
-  const type = data[0];
-  data = data[1];
-  if (type !== "raid") return;
-  if (!data.logAdd) return;
-  port.postMessage(data.logAdd);
-};
-
-window.postMessage("injectInit", "*", [channel.port2]);
