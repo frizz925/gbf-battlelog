@@ -1,7 +1,7 @@
 const path = require("path");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 
-module.exports = {
-  devtool: "cheap-source-map",
+const config = {
   entry: {
     background: path.resolve(__dirname, "./src/background.js"),
     contentscript: path.resolve(__dirname, "./src/contentscript.js"),
@@ -24,5 +24,21 @@ module.exports = {
       test: /\.handlebars$/,
       loader: "handlebars-loader"
     }]
+  },
+  plugins: [
+    new CleanWebpackPlugin([
+      path.resolve(__dirname, "./extension/dist/**/*.*")
+    ])
+  ],
+  externals: {
+    "moment": "moment",
+    "lodash": "_"
   }
 };
+
+if (process.env.NODE_ENV === "production") {
+  console.log("Using production configuration");
+  module.exports = require("./webpack.production")(config);
+} else {
+  module.exports = require("./webpack.development")(config);
+}

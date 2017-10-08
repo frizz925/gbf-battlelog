@@ -14,7 +14,6 @@ export default class Log {
     const el = document.createElement("div");
     el.innerHTML = LogTemplate(this.log);
 
-
     el.childNodes.forEach((node) => {
       this.el = node;
       this.textEls.en = node.querySelector(".comment-en");

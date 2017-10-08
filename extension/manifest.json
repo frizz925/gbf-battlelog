@@ -8,7 +8,11 @@
       "*://game.granbluefantasy.jp/*",
       "*://gbf.game.mbga.jp/*"
     ],
-    "js": ["dist/contentscript.js"],
+    "js": [
+      "js/lodash.core.min.js",
+      "js/moment.min.js",
+      "dist/contentscript.js"
+    ],
     "run_at": "document_start"
   }],
   "permissions": [
@@ -18,6 +22,10 @@
   ],
   "devtools_page": "pages/devtools.html",
   "background": {
-    "scripts": ["dist/background.js"]
+    "scripts": [
+      "js/lodash.core.min.js",
+      "js/moment.min.js",
+      "dist/background.js"
+    ]
   }
 }
