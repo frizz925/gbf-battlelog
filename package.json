@@ -4,6 +4,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "test": "mocha --require babel-register tests",
     "build": "webpack",
     "build:production": "cross-env NODE_ENV=production webpack",
     "watch": "webpack --watch --colors"
@@ -13,11 +14,17 @@
     "babel-eslint": "^8.0.1",
     "babel-loader": "^7.1.2",
     "babel-minify-webpack-plugin": "^0.2.0",
+    "babel-plugin-root-import": "^5.1.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
     "clean-webpack-plugin": "^0.1.17",
     "cross-env": "^5.0.5",
     "eslint": "^4.8.0",
     "handlebars-loader": "^1.6.0",
+    "mocha": "^4.0.1",
     "raw-loader": "^0.5.1",
     "webpack": "^3.6.0",
     "webpack-merge": "^4.1.0"

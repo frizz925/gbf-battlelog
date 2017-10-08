@@ -21,7 +21,7 @@ function parseBoss(boss) {
 }
 
 function parseLog(logs) {
-  return _.map(logs.log, (log) => _.assign({
+  return _.map(logs.log, (log) => Object.assign({
     timestamp: logs.timestamp
   }, log));
 }

@@ -23,19 +23,20 @@ function handleLog(cache, raidId, log, timestamp) {
 function handleUpdate(msg) {
   const raidId = Number(msg.raidId);
   const cache = state.repository.has(raidId) ? state.repository.get(raidId) : [];
-  state.filter.raidIds.add(raidId);
 
   msg.log.forEach(function(log) {
     handleLog(cache, raidId, log);
   });
 
   state.repository.set(raidId, cache);
-  state.updateView();
 
-  if (!state.filter.raidId) {
+  if (!state.filter.raidId || !state.filter.raidIds.has(raidId)) {
+    state.filter.raidIds.add(raidId);
     state.filter.raidId = raidId;
+    state.updateView();
     state.updateFilter();
   }
+
   scrollToBottom();
 }
 
